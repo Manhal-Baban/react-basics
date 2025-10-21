@@ -5,17 +5,15 @@ import Header from "./components/Header";
 
 function App() {
   return (
-    <>
-      <div className="App">
-        <Header />
-        <main>
-          <Card name="John Doe" age={30} title="CEO" />
-          <Card name="Jane Smith" age={25} title="Developer" />
-          <Card name="Sam Brown" age={28} title="Designer" />
-        </main>
-        <Footer />
-      </div>
-    </>
+    <div className="app">
+      <Header />
+      <main className="main-content">
+        <Card name="Maria" title="CEO" age="29" />
+        <Card name="Kati" title="Developer" age="25" />
+        <Card name="Karin" title="Designer" age="45" />
+      </main>
+      <Footer />
+    </div>
   );
 }
 

@@ -3,7 +3,7 @@ import styles from "./Footer.module.css";
 const Footer = () => {
   return (
     <footer className={styles.footer}>
-      <p>Copyrights</p>
+      <p>© 2025 Manhal Baban. All rights reserved. WP25K</p>
     </footer>
   );
 };

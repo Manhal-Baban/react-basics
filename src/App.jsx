@@ -1,52 +1,69 @@
+import { useState } from "react";
 import "./App.css";
 import Card from "./components/Card";
-import Footer from "./components/Footer";
-import Header from "./components/Header";
 import Counter from "./components/Counter";
-import { useState } from "react";
+import Footer from "./components/Footer";
+import Form from "./components/Form";
+import Header from "./components/Header";
 import data from "./data";
 
 function App() {
+  // const { count, setCount } = useCounter();
   const [count, setCount] = useState(0);
   const [employees, setEmployees] = useState(data);
+  const [formData, setFormData] = useState({
+    age: "",
+    name: "",
+    title: "",
+  });
 
   const handleClick = () => {
     setEmployees([
       ...employees,
       {
         id: employees.length + 1,
-        name: "John Doe",
-        title: "Developer",
-        salary: "$2500",
-        phone: "123-456-7890",
-        email: "johndoe@yahoo.com",
-        animal: "Tiger",
+        name: formData.name,
+        title: formData.title,
+        age: formData.age,
+        isFavourite: false,
       },
     ]);
+  };
+
+  const toggleFavourite = (id) => {
+    const updatedEmployees = employees.map((employee) => {
+      if (employee.id && employee.isFavourite === undefined) {
+        return { ...employee, isFavourite: false };
+      } else if (employee.id === id) {
+        return { ...employee, isFavourite: !employee.isFavourite };
+      } else {
+        return employee;
+      }
+    });
+    setEmployees(updatedEmployees);
   };
 
   return (
     <div className="app">
       <Header />
       <main className="main-content">
-        <button onClick={handleClick}>Add Employee</button>
         {employees.map((employee) => {
           console.log(employee);
 
           return (
             <Card
               key={employee.id}
-              name={employee.name}
-              title={employee.title}
-              salary={employee.salary}
-              phone={employee.phone}
-              email={employee.email}
-              animal={employee.animal}
+              {...employee}
+              toggleFavourite={toggleFavourite}
             />
           );
         })}
-
         <Counter count={count} setCount={setCount} />
+        <Form
+          formData={formData}
+          setFormData={setFormData}
+          handleClick={handleClick}
+        />
       </main>
       <Footer count={count} setCount={setCount} />
     </div>

@@ -1,10 +1,9 @@
 .card {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   justify-content: center;
   text-align: left;
-  min-width: 400px;
+  min-width: 200px;
   background-color: white;
   padding: 20px;
   border-radius: 8px;
@@ -19,7 +18,9 @@
   color: #000;
 }
 
-.title {
+.title,
+.age,
+.favourite {
   font-size: 14px;
   margin-bottom: 4px;
   color: #000;

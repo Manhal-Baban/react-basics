@@ -1,19 +1,28 @@
-form {
+.container {
   display: flex;
   flex-direction: column;
-  gap: 0.5em;
-  margin-top: 2em;
-  padding: 1em;
-  background-color: whitesmoke;
-  border-radius: 8px;
-  border: solid 2px black;
-  width: 300px;
+  gap: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.output {
-  margin-top: 0.5em;
-  background-color: lightgray;
-  border-radius: 8px;
-  border: solid 1px black;
-  padding: 0.5em 1em;
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form label {
+  font-weight: bold;
+  font-size: 16px;
+  color: #000;
 }

@@ -6,6 +6,8 @@ import About from "./components/About";
 import ErrorPage from "./components/ErrorPage";
 import Home from "./components/Home";
 import Layout from "./Layout";
+import SingleEmployee from "./components/SingleEmployee";
+import Todos from "./components/Todos";
 
 // function App() {
 //   return (
@@ -28,8 +30,16 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
+        path: "employees/:id",
+        element: <SingleEmployee />,
+      },
+      {
         path: "about",
         element: <About />,
+      },
+      {
+        path: "todos", // New route for Todos component
+        element: <Todos />,
       },
       {
         path: "*",

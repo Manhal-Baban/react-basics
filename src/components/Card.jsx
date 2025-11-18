@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router";
 import styles from "./Card.module.css";
 
 const Card = ({
@@ -11,6 +12,8 @@ const Card = ({
 }) => {
   console.log("Card props - ID:", id, "Name:", name);
 
+  const navigate = useNavigate();
+
   return (
     <div className={styles.card}>
       <button onClick={() => toggleFavourite(id)}>Toggle Favourite</button>
@@ -19,6 +22,9 @@ const Card = ({
       <div className={styles.title}>Title: {title}</div>
       <div className={styles.age}>Age: {age}</div>
       <div className={styles.favourite}>{isFavourite && <span>❤️</span>}</div>
+      <button onClick={() => navigate(`/employees/${id}`)}>
+        View Employee
+      </button>
     </div>
   );
 };

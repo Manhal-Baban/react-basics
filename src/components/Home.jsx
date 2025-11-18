@@ -14,11 +14,23 @@ function Home() {
     name: "",
     title: "",
   });
+  const [loading, setLoading] = useState(true);
+  console.log("Component Rendered");
 
   useEffect(() => {
-    axios.get("http://localhost:3001/employees").then((response) => {
-      setEmployees(response.data);
-    });
+    // Common error when handling loading state:
+    // setLoading(true); // This is an error
+    axios
+      .get("http://localhost:3001/employees")
+      .then((response) => {
+        setEmployees(response.data);
+      })
+      .catch((error) => {
+        console.log("Error: ", error.message);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   }, []);
 
   const handleDelete = (id) => {
@@ -53,6 +65,10 @@ function Home() {
     });
     setEmployees(updatedEmployees);
   };
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="app">

@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router";
 import styles from "./Card.module.css";
 import prototype from "prop-types";
+import Button from "@mui/material/Button";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 const Card = ({
   name,
@@ -18,7 +20,16 @@ const Card = ({
   return (
     <div className={styles.card}>
       <button onClick={() => toggleFavourite(id)}>Toggle Favourite</button>
-      <button onClick={() => handleDelete(id)}>Delete</button>
+      {/* <button onClick={() => handleDelete(id)}>Delete</button> */}
+      <Button
+        onClick={() => handleDelete(id)}
+        variant="contained"
+        color="secondary"
+        sx={{ padding: "0.5px" }}
+        startIcon={<DeleteIcon />}
+      >
+        Delete
+      </Button>
       <div className={styles.name}>{name}</div>
       <div className={styles.title}>Title: {title}</div>
       <div className={styles.age}>Age: {age}</div>
@@ -37,6 +48,7 @@ Card.prototype = {
   isFavourite: prototype.bool,
   id: prototype.string.isRequired,
   handleDelete: prototype.func.isRequired,
+  toggleFavourite: prototype.func.isRequired,
 };
 
 export default Card;

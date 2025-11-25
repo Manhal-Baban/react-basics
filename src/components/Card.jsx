@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router";
 import styles from "./Card.module.css";
+import prototype from "prop-types";
 
 const Card = ({
   name,
@@ -27,6 +28,15 @@ const Card = ({
       </button>
     </div>
   );
+};
+
+Card.prototype = {
+  name: prototype.string.isRequired,
+  title: prototype.string.isRequired,
+  age: prototype.number.isRequired,
+  isFavourite: prototype.bool,
+  id: prototype.string.isRequired,
+  handleDelete: prototype.func.isRequired,
 };
 
 export default Card;

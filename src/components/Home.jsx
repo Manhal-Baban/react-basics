@@ -6,6 +6,7 @@ import Counter from "../components/Counter";
 import Form from "../components/Form";
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
+import EmployeesTable from "./EmployeesTable";
 
 function Home() {
   // const { count, setCount } = useCounter();
@@ -103,6 +104,7 @@ function Home() {
           setFormData={setFormData}
           handleClick={handleClick}
         />
+        <EmployeesTable />
       </main>
     </div>
   );

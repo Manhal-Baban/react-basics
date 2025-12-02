@@ -2,6 +2,7 @@ import { createTheme } from "@mui/material/styles";
 
 const theme = createTheme({
   palette: {
+    mode: "light",
     primary: {
       main: "#1976d2",
       limeGreen: "#00FF00",
@@ -17,6 +18,7 @@ const theme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: {
+          margin: "5px",
           textTransform: "none",
         },
       },

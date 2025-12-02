@@ -1,11 +1,15 @@
+import { Button, Typography } from "@mui/material";
 import styles from "./Footer.module.css";
 
 const Footer = ({ count, setCount }) => {
   return (
     <footer className={styles.footer}>
-      <p>© 2025 Manhal Baban. All rights reserved. WP25K</p>
+      <Typography variant="body1">
+        © 2025 Manhal Baban. All rights reserved. WP25K
+      </Typography>
       <div>{count}</div>
-      <button onClick={() => setCount(count + 1)}>Increment</button>
+      <Button onClick={() => setCount(count + 1)}>Increment</Button>
+      <Button onClick={() => setCount(count - 1)}>Decrement</Button>
     </footer>
   );
 };

@@ -1,18 +1,23 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import axios from "axios";
+import useAxios from "../hooks/useAxios";
 
 const SingleEmployee = () => {
   const { id } = useParams();
   const [employee, setEmployee] = useState(null);
   console.log("employee:", employee);
-  const [loading, setLoading] = useState(true);
+  const [isloading, setIsLoading] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({
     name: employee?.name || "",
     title: employee?.title || "",
     age: employee?.age || "",
   });
+
+  const url = `https://react-basics-oa4p.onrender.com/employees/${id}`;
+
+  const { data, loading, error } = useAxios(url);
 
   const handlechange = (e) => {
     setFormData((prevState) => {
@@ -35,27 +40,22 @@ const SingleEmployee = () => {
         console.log("Error: ", error.message);
       })
       .finally(() => {
-        setLoading(false);
+        setIsLoading(false);
       });
   };
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:3001/employees/${id}`)
-      .then((response) => {
-        setEmployee(response.data);
-        setFormData({
-          name: response.data.name,
-          title: response.data.title,
-          age: response.data.age,
-        });
-      })
-      .finally(() => {
-        setLoading(false);
+    if (data) {
+      setEmployee(data);
+      setFormData({
+        name: data.name,
+        title: data.title,
+        age: data.age,
       });
-  }, [id]);
+    }
+  }, [id, data, loading]);
 
-  if (loading) {
+  if (loading || isloading) {
     return <div>Loading...</div>;
   }
 
